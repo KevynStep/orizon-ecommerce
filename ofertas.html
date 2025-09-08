@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas - Orizon</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .offers-hero {
+            background: linear-gradient(135deg, #ff6b6b 0%, #FFD700 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        
+        .offers-hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .countdown-timer {
+            background: rgba(255,255,255,0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+        
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .timer-unit {
+            text-align: center;
+            background: rgba(255,255,255,0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            min-width: 80px;
+        }
+        
+        .timer-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .timer-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .flash-deals {
+            padding: 4rem 0;
+            background: #f9f9f9;
+        }
+        
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .deal-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s;
+        }
+        
+        .deal-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .deal-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #ff4757;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+        
+        .deal-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .deal-info {
+            padding: 1.5rem;
+        }
+        
+        .deal-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .price-section {
+            margin-bottom: 1rem;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1rem;
+        }
+        
+        .sale-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff4757;
+            margin-left: 0.5rem;
+        }
+        
+        .savings {
+            background: #2ed573;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        
+        .deal-progress {
+            margin: 1rem 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700, #ff6b6b);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        
+        .deal-timer {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .deal-timer-text {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .deal-countdown {
+            font-weight: bold;
+            color: #ff4757;
+            font-size: 1.1rem;
+        }
+        
+        .categories-deals {
+            padding: 4rem 0;
+        }
+        
+        .category-deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .category-deal {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .category-deal:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+        
+        .category-deal h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .category-discount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff4757;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .timer-display {
+                gap: 1rem;
+            }
+            
+            .timer-unit {
+                min-width: 60px;
+                padding: 0.8rem;
+            }
+            
+            .timer-number {
+                font-size: 1.5rem;
+            }
+            
+            .offers-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/LogoOrizon.png" alt="Orizon" class="logo-img">
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="categorias.html">Categorias</a></li>
+                        <li><a href="ofertas.html" class="active">Ofertas</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="Buscar produtos..." class="search-input">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    
+                    <div class="user-actions">
+                        <a href="login.html" class="user-btn"><i class="fas fa-user"></i></a>
+                        <a href="favoritos.html" class="wishlist-btn"><i class="fas fa-heart"></i></a>
+                        <div class="cart-container">
+                            <button class="cart-btn" onclick="toggleCart()">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </button>
+                            <!-- Cart Popup -->
+                            <div class="cart-popup" id="cartPopup">
+                                <div class="cart-header">
+                                    <h3>Meu Carrinho</h3>
+                                    <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="cart-items" id="cartItems">
+                                    <p class="empty-cart">Seu carrinho está vazio</p>
+                                </div>
+                                <div class="cart-footer">
+                                    <div class="cart-total">
+                                        <strong>Total: R$ <span id="cartTotal">0,00</span></strong>
+                                    </div>
+                                    <button class="checkout-btn">Finalizar Compra</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="offers-hero">
+        <div class="container">
+            <h1>🔥 Super Ofertas</h1>
+            <p>Descontos imperdíveis por tempo limitado!</p>
+            
+            <div class="countdown-timer">
+                <h3>Oferta Relâmpago termina em:</h3>
+                <div class="timer-display" id="countdownTimer">
+                    <div class="timer-unit">
+                        <span class="timer-number" id="hours">12</span>
+                        <span class="timer-label">Horas</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-number" id="minutes">34</span>
+                        <span class="timer-label">Minutos</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-number" id="seconds">56</span>
+                        <span class="timer-label">Segundos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Deals -->
+    <section class="flash-deals">
+        <div class="container">
+            <h2 style="text-align: center; font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">⚡ Ofertas Relâmpago</h2>
+            
+            <div class="deals-grid">
+                <div class="deal-card">
+                    <div class="deal-badge">-50%</div>
+                    <img src="assets/images/produtos_destaque.png" alt="Produto em oferta" class="deal-image">
+                    <div class="deal-info">
+                        <h3 class="deal-title">Smartphone Premium 128GB</h3>
+                        <div class="price-section">
+                            <span class="original-price">R$ 1.299,90</span>
+                            <span class="sale-price">R$ 649,90</span>
+                            <div class="savings">Economize R$ 650,00</div>
+                        </div>
+                        <div class="deal-progress">
+                            <div class="progress-label">
+                                <span>Vendidos: 23</span>
+                                <span>Restam: 7</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 77%"></div>
+                            </div>
+                        </div>
+                        <div class="deal-timer">
+                            <div class="deal-timer-text">Oferta termina em:</div>
+                            <div class="deal-countdown">02:15:30</div>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart(19)">
+                            <i class="fas fa-shopping-cart"></i> Comprar Agora
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="deal-card">
+                    <div class="deal-badge">-40%</div>
+                    <img src="assets/images/produtos_destaque.png" alt="Produto em oferta" class="deal-image">
+                    <div class="deal-info">
+                        <h3 class="deal-title">Notebook Gamer RTX</h3>
+                        <div class="price-section">
+                            <span class="original-price">R$ 3.999,90</span>
+                            <span class="sale-price">R$ 2.399,90</span>
+                            <div class="savings">Economize R$ 1.600,00</div>
+                        </div>
+                        <div class="deal-progress">
+                            <div class="progress-label">
+                                <span>Vendidos: 15</span>
+                                <span>Restam: 5</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="deal-timer">
+                            <div class="deal-timer-text">Oferta termina em:</div>
+                            <div class="deal-countdown">01:45:22</div>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart(20)">
+                            <i class="fas fa-shopping-cart"></i> Comprar Agora
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="deal-card">
+                    <div class="deal-badge">-60%</div>
+                    <img src="assets/images/produtos_destaque.png" alt="Produto em oferta" class="deal-image">
+                    <div class="deal-info">
+                        <h3 class="deal-title">Fones Bluetooth Premium</h3>
+                        <div class="price-section">
+                            <span class="original-price">R$ 399,90</span>
+                            <span class="sale-price">R$ 159,90</span>
+                            <div class="savings">Economize R$ 240,00</div>
+                        </div>
+                        <div class="deal-progress">
+                            <div class="progress-label">
+                                <span>Vendidos: 45</span>
+                                <span>Restam: 15</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="deal-timer">
+                            <div class="deal-timer-text">Oferta termina em:</div>
+                            <div class="deal-countdown">03:22:18</div>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart(21)">
+                            <i class="fas fa-shopping-cart"></i> Comprar Agora
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Deals -->
+    <section class="categories-deals">
+        <div class="container">
+            <h2 style="text-align: center; font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">Ofertas por Categoria</h2>
+            
+            <div class="category-deals-grid">
+                <div class="category-deal">
+                    <div class="category-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Moda</h3>
+                    <div class="category-discount">Até 70% OFF</div>
+                    <p>Roupas, calçados e acessórios com descontos incríveis</p>
+                    <button class="cta-btn" onclick="window.location.href='produtos.html?category=moda'">Ver Ofertas</button>
+                </div>
+                
+                <div class="category-deal">
+                    <div class="category-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Eletrônicos</h3>
+                    <div class="category-discount">Até 50% OFF</div>
+                    <p>Smartphones, notebooks e gadgets em promoção</p>
+                    <button class="cta-btn" onclick="window.location.href='produtos.html?category=eletronicos'">Ver Ofertas</button>
+                </div>
+                
+                <div class="category-deal">
+                    <div class="category-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Casa & Jardim</h3>
+                    <div class="category-discount">Até 60% OFF</div>
+                    <p>Decoração e utilidades domésticas com preços especiais</p>
+                    <button class="cta-btn" onclick="window.location.href='produtos.html?category=casa'">Ver Ofertas</button>
+                </div>
+                
+                <div class="category-deal">
+                    <div class="category-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Esportes</h3>
+                    <div class="category-discount">Até 45% OFF</div>
+                    <p>Equipamentos esportivos e fitness em oferta</p>
+                    <button class="cta-btn" onclick="window.location.href='produtos.html?category=esportes'">Ver Ofertas</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Orizon</h3>
+                    <p>Sua loja online de confiança, oferecendo produtos de qualidade com os melhores preços.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="trocas.html">Trocas e Devoluções</a></li>
+                        <li><a href="entrega.html">Política de Entrega</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@orizon.com.br</p>
+                    <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Orizon. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const endTime = now + (12 * 60 * 60 * 1000) + (34 * 60 * 1000) + (56 * 1000); // 12h 34m 56s from now
+            
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+                
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                
+                if (distance < 0) {
+                    document.getElementById('countdownTimer').innerHTML = '<h3>Oferta Encerrada!</h3>';
+                }
+            }, 1000);
+        }
+        
+        // Adicionar produtos de oferta ao array global
+        const offerProducts = [
+            { id: 19, name: "Smartphone Premium 128GB", price: 649.90, image: "assets/images/produtos_destaque.png" },
+            { id: 20, name: "Notebook Gamer RTX", price: 2399.90, image: "assets/images/produtos_destaque.png" },
+            { id: 21, name: "Fones Bluetooth Premium", price: 159.90, image: "assets/images/produtos_destaque.png" }
+        ];
+        
+        // Adicionar produtos de oferta ao array principal
+        if (typeof featuredProducts !== 'undefined') {
+            featuredProducts.push(...offerProducts);
+        }
+        
+        // Inicializar countdown
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCountdown();
+        });
+    </script>
+</body>
+</html>
+

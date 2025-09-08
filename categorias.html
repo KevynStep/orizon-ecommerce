@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorias - Orizon</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/LogoOrizon.png" alt="Orizon" class="logo-img">
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="categorias.html" class="active">Categorias</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="Buscar produtos..." class="search-input">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    
+                    <div class="user-actions">
+                        <a href="login.html" class="user-btn"><i class="fas fa-user"></i></a>
+                        <a href="favoritos.html" class="wishlist-btn"><i class="fas fa-heart"></i></a>
+                        <div class="cart-container">
+                            <button class="cart-btn" onclick="toggleCart()">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </button>
+                            <!-- Cart Popup -->
+                            <div class="cart-popup" id="cartPopup">
+                                <div class="cart-header">
+                                    <h3>Meu Carrinho</h3>
+                                    <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="cart-items" id="cartItems">
+                                    <p class="empty-cart">Seu carrinho está vazio</p>
+                                </div>
+                                <div class="cart-footer">
+                                    <div class="cart-total">
+                                        <strong>Total: R$ <span id="cartTotal">0,00</span></strong>
+                                    </div>
+                                    <button class="checkout-btn">Finalizar Compra</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section style="background: linear-gradient(135deg, #f5f5dc 0%, #fff 100%); padding: 8rem 0 4rem; text-align: center; margin-top: 100px;">
+        <div class="container">
+            <h1 style="font-family: 'Montserrat', sans-serif; font-size: 3rem; margin-bottom: 1rem; color: #333;">Todas as Categorias</h1>
+            <p style="font-size: 1.2rem; color: #666;">Explore nossa ampla variedade de produtos organizados por categoria</p>
+        </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section style="padding: 4rem 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+                
+                <div class="category-card" style="background: white; padding: 3rem 2rem; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer;" onclick="window.location.href='produtos.html?category=moda'">
+                    <i class="fas fa-tshirt" style="font-size: 4rem; color: #FFD700; margin-bottom: 1.5rem;"></i>
+                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; color: #333;">Moda</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Roupas, calçados e acessórios para todos os estilos</p>
+                    <div style="color: #FFD700; font-weight: bold; margin-bottom: 1rem;">+500 produtos</div>
+                    <button style="background: #FFD700; border: none; padding: 0.8rem 2rem; border-radius: 25px; font-weight: bold; cursor: pointer;">Explorar</button>
+                </div>
+
+                <div class="category-card" style="background: white; padding: 3rem 2rem; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer;" onclick="window.location.href='produtos.html?category=eletronicos'">
+                    <i class="fas fa-laptop" style="font-size: 4rem; color: #FFD700; margin-bottom: 1.5rem;"></i>
+                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; color: #333;">Eletrônicos</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Smartphones, notebooks, tablets e gadgets</p>
+                    <div style="color: #FFD700; font-weight: bold; margin-bottom: 1rem;">+300 produtos</div>
+                    <button style="background: #FFD700; border: none; padding: 0.8rem 2rem; border-radius: 25px; font-weight: bold; cursor: pointer;">Explorar</button>
+                </div>
+
+                <div class="category-card" style="background: white; padding: 3rem 2rem; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer;" onclick="window.location.href='produtos.html?category=casa'">
+                    <i class="fas fa-home" style="font-size: 4rem; color: #FFD700; margin-bottom: 1.5rem;"></i>
+                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; color: #333;">Casa & Jardim</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Decoração, móveis e utensílios domésticos</p>
+                    <div style="color: #FFD700; font-weight: bold; margin-bottom: 1rem;">+400 produtos</div>
+                    <button style="background: #FFD700; border: none; padding: 0.8rem 2rem; border-radius: 25px; font-weight: bold; cursor: pointer;">Explorar</button>
+                </div>
+
+                <div class="category-card" style="background: white; padding: 3rem 2rem; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer;" onclick="window.location.href='produtos.html?category=esportes'">
+                    <i class="fas fa-dumbbell" style="font-size: 4rem; color: #FFD700; margin-bottom: 1.5rem;"></i>
+                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; color: #333;">Esportes</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Equipamentos esportivos e fitness</p>
+                    <div style="color: #FFD700; font-weight: bold; margin-bottom: 1rem;">+250 produtos</div>
+                    <button style="background: #FFD700; border: none; padding: 0.8rem 2rem; border-radius: 25px; font-weight: bold; cursor: pointer;">Explorar</button>
+                </div>
+
+                <div class="category-card" style="background: white; padding: 3rem 2rem; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer;" onclick="window.location.href='produtos.html?category=beleza'">
+                    <i class="fas fa-spa" style="font-size: 4rem; color: #FFD700; margin-bottom: 1.5rem;"></i>
+                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; color: #333;">Beleza</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Cosméticos, perfumes e cuidados pessoais</p>
+                    <div style="color: #FFD700; font-weight: bold; margin-bottom: 1rem;">+200 produtos</div>
+                    <button style="background: #FFD700; border: none; padding: 0.8rem 2rem; border-radius: 25px; font-weight: bold; cursor: pointer;">Explorar</button>
+                </div>
+
+                <div class="category-card" style="background: white; padding: 3rem 2rem; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer;" onclick="window.location.href='produtos.html?category=livros'">
+                    <i class="fas fa-book" style="font-size: 4rem; color: #FFD700; margin-bottom: 1.5rem;"></i>
+                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; color: #333;">Livros</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Literatura, educação e entretenimento</p>
+                    <div style="color: #FFD700; font-weight: bold; margin-bottom: 1rem;">+150 produtos</div>
+                    <button style="background: #FFD700; border: none; padding: 0.8rem 2rem; border-radius: 25px; font-weight: bold; cursor: pointer;">Explorar</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Orizon</h3>
+                    <p>Sua loja online de confiança, oferecendo produtos de qualidade com os melhores preços.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="trocas.html">Trocas e Devoluções</a></li>
+                        <li><a href="entrega.html">Política de Entrega</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@orizon.com.br</p>
+                    <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Orizon. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+

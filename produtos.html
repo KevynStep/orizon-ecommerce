@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Orizon</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .products-hero {
+            background: linear-gradient(135deg, #f5f5dc 0%, #fff 100%);
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        
+        .products-hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .filters-section {
+            background: white;
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .filters-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .products-main {
+            padding: 3rem 0;
+        }
+        
+        .products-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .sidebar {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            height: fit-content;
+        }
+        
+        .sidebar h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .category-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .category-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-list a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .category-list a:hover,
+        .category-list a.active {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        
+        .price-filter {
+            margin-bottom: 2rem;
+        }
+        
+        .price-range {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .price-input {
+            width: 80px;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        
+        .products-content {
+            min-height: 500px;
+        }
+        
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .results-count {
+            color: #666;
+        }
+        
+        .view-toggle {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .view-btn {
+            background: #f5f5f5;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .view-btn.active {
+            background: #FFD700;
+        }
+        
+        .products-grid-page {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .pagination button {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pagination button:hover {
+            background: #FFD700;
+            border-color: #FFD700;
+        }
+        
+        .pagination button.active {
+            background: #FFD700;
+            border-color: #FFD700;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: 2;
+            }
+            
+            .filters-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/LogoOrizon.png" alt="Orizon" class="logo-img">
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="produtos.html" class="active">Produtos</a></li>
+                        <li><a href="categorias.html">Categorias</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="Buscar produtos..." class="search-input">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    
+                    <div class="user-actions">
+                        <a href="login.html" class="user-btn"><i class="fas fa-user"></i></a>
+                        <a href="favoritos.html" class="wishlist-btn"><i class="fas fa-heart"></i></a>
+                        <div class="cart-container">
+                            <button class="cart-btn" onclick="toggleCart()">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </button>
+                            <!-- Cart Popup -->
+                            <div class="cart-popup" id="cartPopup">
+                                <div class="cart-header">
+                                    <h3>Meu Carrinho</h3>
+                                    <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="cart-items" id="cartItems">
+                                    <p class="empty-cart">Seu carrinho está vazio</p>
+                                </div>
+                                <div class="cart-footer">
+                                    <div class="cart-total">
+                                        <strong>Total: R$ <span id="cartTotal">0,00</span></strong>
+                                    </div>
+                                    <button class="checkout-btn">Finalizar Compra</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="products-hero">
+        <div class="container">
+            <h1>Nossos Produtos</h1>
+            <p>Descubra nossa seleção cuidadosa de produtos de qualidade</p>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label>Ordenar por:</label>
+                    <select class="filter-select" id="sortSelect">
+                        <option value="relevance">Relevância</option>
+                        <option value="price-low">Menor Preço</option>
+                        <option value="price-high">Maior Preço</option>
+                        <option value="name">Nome A-Z</option>
+                        <option value="newest">Mais Recentes</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Mostrar:</label>
+                    <select class="filter-select" id="perPageSelect">
+                        <option value="12">12 por página</option>
+                        <option value="24">24 por página</option>
+                        <option value="48">48 por página</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Main -->
+    <section class="products-main">
+        <div class="products-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <h3>Categorias</h3>
+                <ul class="category-list">
+                    <li><a href="#" class="active">Todos os Produtos</a></li>
+                    <li><a href="#">Moda</a></li>
+                    <li><a href="#">Eletrônicos</a></li>
+                    <li><a href="#">Casa & Jardim</a></li>
+                    <li><a href="#">Esportes</a></li>
+                    <li><a href="#">Beleza</a></li>
+                    <li><a href="#">Livros</a></li>
+                    <li><a href="#">Brinquedos</a></li>
+                </ul>
+                
+                <div class="price-filter">
+                    <h3>Faixa de Preço</h3>
+                    <div class="price-range">
+                        <input type="number" class="price-input" placeholder="Min" id="minPrice">
+                        <span>até</span>
+                        <input type="number" class="price-input" placeholder="Max" id="maxPrice">
+                    </div>
+                    <button style="width: 100%; margin-top: 1rem; background: #FFD700; border: none; padding: 0.5rem; border-radius: 5px; cursor: pointer;">Filtrar</button>
+                </div>
+                
+                <div class="brand-filter">
+                    <h3>Marcas</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label><input type="checkbox"> Nike</label>
+                        <label><input type="checkbox"> Adidas</label>
+                        <label><input type="checkbox"> Samsung</label>
+                        <label><input type="checkbox"> Apple</label>
+                        <label><input type="checkbox"> Sony</label>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- Products Content -->
+            <main class="products-content">
+                <div class="products-header">
+                    <div class="results-count">
+                        Mostrando <span id="resultsCount">24</span> produtos
+                    </div>
+                    
+                    <div class="view-toggle">
+                        <button class="view-btn active" onclick="setGridView()">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" onclick="setListView()">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="products-grid-page" id="productsGrid">
+                    <!-- Products will be loaded by JavaScript -->
+                </div>
+                
+                <div class="pagination">
+                    <button onclick="changePage(-1)">
+                        <i class="fas fa-chevron-left"></i> Anterior
+                    </button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button onclick="changePage(1)">
+                        Próximo <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Orizon</h3>
+                    <p>Sua loja online de confiança, oferecendo produtos de qualidade com os melhores preços.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="trocas.html">Trocas e Devoluções</a></li>
+                        <li><a href="entrega.html">Política de Entrega</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@orizon.com.br</p>
+                    <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Orizon. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Produtos para a página de produtos
+        const allProducts = [
+            { id: 7, name: "Smartphone Premium", price: 1299.90, image: "assets/images/produtos_destaque.png", category: "eletrônicos" },
+            { id: 8, name: "Vestido Elegante", price: 199.90, image: "assets/images/produtos_destaque.png", category: "moda" },
+            { id: 9, name: "Cafeteira Elétrica", price: 299.90, image: "assets/images/produtos_destaque.png", category: "casa" },
+            { id: 10, name: "Bicicleta Mountain Bike", price: 899.90, image: "assets/images/produtos_destaque.png", category: "esportes" },
+            { id: 11, name: "Perfume Importado", price: 159.90, image: "assets/images/produtos_destaque.png", category: "beleza" },
+            { id: 12, name: "Livro Best Seller", price: 39.90, image: "assets/images/produtos_destaque.png", category: "livros" },
+            { id: 13, name: "Tablet 10 polegadas", price: 699.90, image: "assets/images/produtos_destaque.png", category: "eletrônicos" },
+            { id: 14, name: "Jaqueta de Couro", price: 399.90, image: "assets/images/produtos_destaque.png", category: "moda" },
+            { id: 15, name: "Aspirador de Pó", price: 249.90, image: "assets/images/produtos_destaque.png", category: "casa" },
+            { id: 16, name: "Tênis de Corrida", price: 199.90, image: "assets/images/produtos_destaque.png", category: "esportes" },
+            { id: 17, name: "Kit Maquiagem", price: 129.90, image: "assets/images/produtos_destaque.png", category: "beleza" },
+            { id: 18, name: "Quebra-cabeça 1000 peças", price: 49.90, image: "assets/images/produtos_destaque.png", category: "brinquedos" }
+        ];
+
+        function loadProductsPage() {
+            const productsGrid = document.getElementById('productsGrid');
+            if (!productsGrid) return;
+            
+            let productsHTML = '';
+            
+            allProducts.forEach(product => {
+                productsHTML += `
+                    <div class="product-card">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-name">${product.name}</h3>
+                            <div class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
+                            <button class="add-to-cart" onclick="addToCart(${product.id})">
+                                <i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            productsGrid.innerHTML = productsHTML;
+        }
+
+        function setGridView() {
+            document.querySelector('.products-grid-page').style.display = 'grid';
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function setListView() {
+            // Implementar vista em lista se necessário
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function changePage(direction) {
+            // Implementar mudança de página
+            console.log('Mudando página:', direction);
+        }
+
+        // Carregar produtos quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProductsPage();
+        });
+    </script>
+</body>
+</html>
+

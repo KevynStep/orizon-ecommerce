@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Orizon</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, #FFD700 0%, #4682B4 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        
+        .about-hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .about-hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .story-section {
+            padding: 4rem 0;
+            background: #f9f9f9;
+        }
+        
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .story-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+        
+        .founders-section {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .founder-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: white;
+        }
+        
+        .founder-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFD700, #4682B4);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .founder-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .founder-role {
+            color: #FFD700;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .founder-bio {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .values-section {
+            padding: 4rem 0;
+            background: #f9f9f9;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+        
+        .value-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .value-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .timeline-section {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-year {
+            background: #FFD700;
+            color: #333;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            min-width: 100px;
+            text-align: center;
+            margin-right: 2rem;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .timeline-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .timeline-description {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/LogoOrizon.png" alt="Orizon" class="logo-img">
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="categorias.html">Categorias</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="sobre.html" class="active">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="Buscar produtos..." class="search-input">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    
+                    <div class="user-actions">
+                        <a href="login.html" class="user-btn"><i class="fas fa-user"></i></a>
+                        <a href="favoritos.html" class="wishlist-btn"><i class="fas fa-heart"></i></a>
+                        <div class="cart-container">
+                            <button class="cart-btn" onclick="toggleCart()">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </button>
+                            <!-- Cart Popup -->
+                            <div class="cart-popup" id="cartPopup">
+                                <div class="cart-header">
+                                    <h3>Meu Carrinho</h3>
+                                    <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="cart-items" id="cartItems">
+                                    <p class="empty-cart">Seu carrinho está vazio</p>
+                                </div>
+                                <div class="cart-footer">
+                                    <div class="cart-total">
+                                        <strong>Total: R$ <span id="cartTotal">0,00</span></strong>
+                                    </div>
+                                    <button class="checkout-btn">Finalizar Compra</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>Nossa História</h1>
+            <p>Uma jornada de amizade, sonhos e determinação que deu origem à Orizon</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-content">
+            <h2>Como Tudo Começou</h2>
+            
+            <p class="story-text">
+                Era uma tarde chuvosa de setembro de 2019 quando dois amigos de infância, Rafael e Lucas, se encontraram em um pequeno café no centro de São Paulo. Ambos estavam passando por momentos difíceis em suas carreiras corporativas, sentindo que suas vidas haviam perdido o propósito e a paixão que um dia tiveram.
+            </p>
+            
+            <p class="story-text">
+                Rafael, formado em administração, trabalhava há cinco anos em uma multinacional onde se sentia apenas mais um número. Lucas, engenheiro de software, estava cansado de desenvolver sistemas que não faziam diferença na vida das pessoas. Naquela conversa, entre um café e outro, eles perceberam que compartilhavam o mesmo sonho: criar algo próprio, algo que realmente importasse.
+            </p>
+            
+            <p class="story-text">
+                "E se pudéssemos criar uma loja online que fosse diferente?", perguntou Rafael, com os olhos brilhando pela primeira vez em meses. "Uma loja que não apenas vendesse produtos, mas que criasse experiências, que conectasse pessoas e que fizesse a diferença na vida dos nossos clientes?"
+            </p>
+            
+            <p class="story-text">
+                Lucas sorriu e respondeu: "Como o horizonte... sempre há algo novo para descobrir, sempre há uma nova oportunidade surgindo." Foi assim que nasceu o nome Orizon - uma fusão entre "horizonte" e "zone", representando aquele espaço infinito de possibilidades que se abria diante deles.
+            </p>
+            
+            <p class="story-text">
+                Os primeiros meses foram desafiadores. Trabalhando nas madrugadas e fins de semana, eles investiram todas as suas economias no projeto. Rafael cuidava da parte comercial e de relacionamento com fornecedores, enquanto Lucas desenvolvia a plataforma tecnológica. Houve momentos de desespero, noites sem dormir e discussões acaloradas, mas a amizade e a visão compartilhada os mantiveram unidos.
+            </p>
+            
+            <p class="story-text">
+                O primeiro pedido chegou em março de 2020, justamente quando o mundo parava devido à pandemia. Ironicamente, esse momento de crise se tornou uma oportunidade. Com mais pessoas comprando online, a Orizon cresceu rapidamente, sempre mantendo os valores que a fundaram: qualidade, transparência e cuidado genuíno com cada cliente.
+            </p>
+            
+            <p class="story-text">
+                Hoje, cinco anos depois, a Orizon não é apenas uma loja online - é a realização de um sonho compartilhado por dois amigos que acreditaram que era possível fazer diferente. Cada produto que vendemos, cada cliente que atendemos, carrega um pouco dessa história de amizade, determinação e paixão por criar algo verdadeiramente especial.
+            </p>
+        </div>
+    </section>
+
+    <!-- Founders Section -->
+    <section class="founders-section">
+        <div class="container">
+            <h2 style="text-align: center; font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">Conheça os Fundadores</h2>
+            
+            <div class="founders-grid">
+                <div class="founder-card">
+                    <div class="founder-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="founder-name">Rafael Santos</h3>
+                    <p class="founder-role">CEO & Co-fundador</p>
+                    <p class="founder-bio">
+                        Apaixonado por pessoas e negócios, Rafael lidera a visão estratégica da Orizon. Com mais de 8 anos de experiência em gestão empresarial, ele acredita que o sucesso vem da combinação entre inovação e relacionamentos genuínos. Quando não está trabalhando, Rafael adora viajar e descobrir novos horizontes - literalmente!
+                    </p>
+                </div>
+                
+                <div class="founder-card">
+                    <div class="founder-avatar">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="founder-name">Lucas Oliveira</h3>
+                    <p class="founder-role">CTO & Co-fundador</p>
+                    <p class="founder-bio">
+                        Mestre em transformar ideias em realidade digital, Lucas é o cérebro tecnológico por trás da Orizon. Formado em Engenharia de Software, ele tem uma paixão especial por criar soluções que simplificam a vida das pessoas. Nas horas vagas, Lucas é um entusiasta de jogos e adora experimentar novas tecnologias.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 style="text-align: center; font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">Nossos Valores</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="value-title">Paixão pelo Cliente</h3>
+                    <p class="value-description">
+                        Cada cliente é único e especial para nós. Trabalhamos incansavelmente para superar expectativas e criar experiências memoráveis.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="value-title">Transparência</h3>
+                    <p class="value-description">
+                        Acreditamos na honestidade em todas as nossas relações. Preços justos, informações claras e comunicação aberta são nossos pilares.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="value-title">Inovação</h3>
+                    <p class="value-description">
+                        Estamos sempre buscando formas melhores de servir nossos clientes, seja através de tecnologia ou de novos produtos e serviços.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="value-title">Comunidade</h3>
+                    <p class="value-description">
+                        Mais que uma loja, somos uma comunidade. Valorizamos as relações humanas e o impacto positivo que podemos gerar juntos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 style="text-align: center; font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">Nossa Jornada</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2019</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">O Início de Tudo</h3>
+                        <p class="timeline-description">
+                            Rafael e Lucas se encontram no café e decidem criar a Orizon. Primeiros esboços e planejamento do negócio.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Primeiro Pedido</h3>
+                        <p class="timeline-description">
+                            Lançamento oficial da plataforma e primeiro pedido realizado. Crescimento acelerado durante a pandemia.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Expansão</h3>
+                        <p class="timeline-description">
+                            Ampliação do catálogo de produtos e parcerias com novos fornecedores. Primeira contratação de funcionários.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Reconhecimento</h3>
+                        <p class="timeline-description">
+                            Prêmio de "Melhor E-commerce do Ano" e alcance de 100.000 clientes satisfeitos.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Inovação Tecnológica</h3>
+                        <p class="timeline-description">
+                            Lançamento do aplicativo mobile e implementação de inteligência artificial para personalização da experiência.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Futuro Brilhante</h3>
+                        <p class="timeline-description">
+                            Novos horizontes se abrem com planos de expansão internacional e lançamento de produtos próprios.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Orizon</h3>
+                    <p>Sua loja online de confiança, oferecendo produtos de qualidade com os melhores preços.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="trocas.html">Trocas e Devoluções</a></li>
+                        <li><a href="entrega.html">Política de Entrega</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@orizon.com.br</p>
+                    <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Orizon. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
